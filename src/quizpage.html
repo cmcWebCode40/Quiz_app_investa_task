@@ -4,30 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Quiz Page</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Lets do this</h1>
-        <div class="content">
-            <form>
-                <input type="text" class="active-name" placeholder="enter your name here">
-                <button type="submit" class="submit-data">Save</button>
-            </form>
+        <div class="wrapper">
+            <h1>Lets do this</h1>
+            <div class="content">
+                <form id="form">
+                    <input type="text" class="active-name" placeholder="enter your name here">
+                    <button type="submit" class="submit-data">Save</button>
+                </form>
+            </div>
+            <div class="profile-score"></div>
+            <div class="questions-box">
+            </div>
+            <button class="next-btn">Next</button>
+            <button class="submit"><a  href="./user.html">Submit</a> </button>
         </div>
-        <div class="questions-box">
-            <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat nesciunt voluptatibus exercitationem praesentium beatae veritatis odio eum nulla at reprehenderit. Quam, esse provident? Dignissimos dolore recusandae aliquam nulla quam. Aliquam.</p> -->
 
-            <!-- <input type="radio" name="radiovalue" id="options" value="mike"> mike -->
-        </div>
-        <button class="next-btn">Next</button>
-        <button class="submit">Submit</button>
-
-        <input type="radio" class="option-btn"> <span>new sxkj</span>
-        <input type="radio" class="option-btn"> <span>new this</span>
-        <input type="radio" class="option-btn"> <span>new that</span>
-        <input type="radio" class="option-btn"> <span>new mike</span>
     </div>
     <script src="./js/app.js"></script>
 </body>
