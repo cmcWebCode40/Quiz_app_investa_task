@@ -9,6 +9,13 @@
         color: #fff;
     }
     
+    em {
+        display: block;
+        color: #333;
+        margin-top: .4rem;
+        font-size: .8rem;
+    }
+    
     body {
         font-size: 1.1rem;
         line-height: 1.7;
@@ -16,8 +23,8 @@
     }
     
     .container {
-        margin: 5rem auto 0 auto;
-        width: 80%;
+        margin: 5rem auto;
+        width: 60%;
     }
     
     .wrapper {
@@ -41,7 +48,7 @@
         top: 20%;
     }
     
-    .profile .fa {
+    .profile a {
         background-color: orangered;
     }
     
@@ -79,6 +86,15 @@
         border: 1px solid #6C63FF;
     }
     
+    label {
+        display: block;
+        margin: 0 15rem 0 0;
+    }
+    
+    label span {
+        color: red;
+    }
+    
     .submit-data {
         background-color: #6C63FF;
         border: none;
@@ -96,12 +112,14 @@
         background-color: rgba(204, 204, 204, 0.185);
         margin: 0 3rem;
         border-radius: 7px;
-        padding: 2rem 2rem 2rem 2rem;
+        padding: 1rem 2rem;
     }
     
-    .question-space {
-        text-align: center;
-        /* margin-bottom: .5rem; */
+    .ready {
+        position: absolute;
+        left: 28%;
+        margin-top: .2rem;
+        color: rgb(20, 243, 20);
     }
     
     .radio-btn {
@@ -109,13 +127,9 @@
         margin: -.2rem 0;
     }
     
-    .answer-options {
-        /* margin-left: -3rem; */
-        padding: -5rem;
-    }
-    
     .next-btn,
-    .submit {
+    .submit,
+    .restart {
         margin: 1rem auto;
         background-color: #6C63FF;
         border: none;
@@ -126,7 +140,8 @@
     }
     
     .next-btn:hover,
-    .submit:hover {
+    .submit:hover,
+    .restart:hover {
         opacity: .7;
     }
     
@@ -135,6 +150,7 @@
         margin: 0 3rem;
         border-radius: 7px;
         padding: 2rem 2rem 2rem 2rem;
+        /* width: 90%; */
     }
     
     .profile-score span {
@@ -142,12 +158,24 @@
         margin-right: .4rem;
     }
     
-    @media (max-width:760px) {
+    .highscore {
+        margin: .3rem -3rem 0 10rem;
+    }
+    
+    .highscore .player-score {
+        color: #6C63FF;
+    }
+    
+    @media (max-width:768px) {
         .submit-data {
             margin: .7rem 0;
-            width: 60%;
+            width: 20%;
         }
         .container {
             width: 100%;
+        }
+        .questions-box {
+            /* width: 90%; */
+            margin: auto 3rem;
         }
     }
