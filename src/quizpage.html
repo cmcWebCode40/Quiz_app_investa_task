@@ -11,18 +11,25 @@
 <body>
     <div class="container">
         <div class="wrapper">
-            <h1>Lets do this</h1>
+            <div class="highscore">
+                <span class="player-score">Highscore</span>
+                <div class="user-score"></div>
+            </div>
             <div class="content">
                 <form id="form">
+                    <label for="name">Name <span>*</span></label>
                     <input type="text" class="active-name" placeholder="enter your name here">
                     <button type="submit" class="submit-data">Save</button>
+                    <em>"note that each question carries 1point"</em>
                 </form>
             </div>
+            <div class="ready">Get Ready <em>Questions are Basics HTML</em></div>
             <div class="profile-score"></div>
             <div class="questions-box">
             </div>
             <button class="next-btn">Next</button>
             <button class="submit"><a  href="./user.html">Submit</a> </button>
+            <button class="restart"><a  href="./quizpage.html">Retake Quiz</a> </button>
         </div>
 
     </div>
