@@ -2,64 +2,92 @@ const userName = document.querySelector(".active-name");
 const container = document.querySelector(".container");
 const nextBtn = document.querySelector(".next-btn");
 const submit = document.querySelector(".submit");
+const start = document.querySelector(".start-btn");
 const radioBtn = document.getElementsByName("options");
-const startBtn = document.querySelector(".start-btn");
 const questionBox = document.querySelector(".questions-box");
-submit.style.display = "none"
+const restart = document.querySelector(".restart");
+const readyToPlay = document.querySelector(".ready");
+
+submit.style.display = "none";
+restart.style.display = "none";
+questionBox.style.display = "none";
 
 const scores = [];
 const form = document.querySelector("#form");
+
+// //L****Local storage files****//
+// const getScore = JSON.parse(localStorage.getItem("score"));
+// const getUserName = JSON.parse(localStorage.getItem("name"));
+
 form.addEventListener("submit", e => {
     e.preventDefault();
-    const storeUserName = localStorage.setItem(
-        "name",
-        JSON.stringify(userName.value)
-    );
+    localStorage.setItem("name", JSON.stringify(userName.value));
     userName.value = "";
     form.style.display = "none";
+    questionBox.style.display = "block";
+    readyToPlay.style.display = "none";
 });
 
 
+const displayHighScore = () => {
+    const getNewScore = JSON.parse(localStorage.getItem("score"));
+    const highScore = document.querySelector(".user-score");
+    const score = document.createElement("div");
+
+    if (getNewScore) {
+        highScore.innerHTML = "";
+        score.innerHTML = `<span>${getNewScore}</span>`;
+        highScore.append(score);
+    } else {
+        highScore.innerHTML = "";
+        score.innerHTML = `<span>${0}</span>`;
+        highScore.append(score);
+    }
+};
+
+window.addEventListener("load", () => {
+    displayHighScore();
+});
 
 const allQuizQuestions = [{
-        q1: "1.what is the opposite of come ?",
-        a: "go",
-        b: "come",
-        c: "run",
-        d: "near",
-        answer: "go"
+        q1: "1. Which of the following input control is used for input fields that should contain an e-mail address in Web Form 2.0?",
+        a: "email",
+        b: "url",
+        c: "text",
+        d: "number",
+        answer: "email"
     },
     {
-        q1: "2. what is the opposite of go ?",
-        a: "go",
-        b: "come",
-        c: "run",
-        d: "near",
-        answer: "come"
+        q1: "2. Which of the following tag automatically focus one particular form field in HTML5?",
+        a: "output",
+        b: "placeholder",
+        c: "autofocus",
+        d: "required",
+        answer: "autofocus"
     },
     {
-        q1: "3. what is the opposite of run ?",
-        a: "go",
-        b: "come",
-        c: "run",
-        d: "near",
-        answer: "run"
+        q1: "3. Which of the following attribute triggers an abort event?  ",
+        a: "offline",
+        b: "onabort",
+        c: "abort",
+        d: "onbeforeonload",
+        answer: "onabort"
     },
     {
-        q1: "4. what is the opposite of look ?",
-        a: "go",
-        b: "come",
-        c: "run",
-        d: "near",
-        answer: "near"
+        q1: "4. Which of the following attribute triggers event when an element has been dragged to a valid drop target? ",
+        a: "ondragleave",
+        b: " ondrag",
+        c: "ondragend",
+        d: "ondragenter",
+        answer: "ondragenter"
     },
     {
-        q1: "5. what is the opposite of cry ?",
-        a: "go",
-        b: "come",
-        c: "run",
-        d: "near",
-        answer: "go"
+        q1: "5. Which of the following attribute triggers event at the start of a drag operation?",
+        a: "ondragleave",
+        b: " ondrag",
+        c: "ondragover",
+        d: "ondragstart",
+        answer: "ondragstart"
     }
 ];
 
@@ -78,7 +106,6 @@ const appendQuestions = value => {
     <input type="radio" name="options" class="radio-btn"  value=${result.c}> <span class="answer-options"> ${result.c}</sapn>
     <input type="radio" name="options" class="radio-btn"  value=${result.d}> <span class="answer-options"> ${result.d}</sapn>`;
     questionBox.append(quizBox);
-
 };
 
 const updateQuestions = () => {
@@ -89,7 +116,7 @@ const initializeQuiz = (() => {
     appendQuestions(0);
 })();
 
-console.log(allQuizQuestions);
+console.log("hello");
 
 const moveToNextQuestion = (() => {
     nextBtn.addEventListener("click", e => {
@@ -104,10 +131,9 @@ const moveToNextQuestion = (() => {
             }
         }
         if (questionCount >= 4) {
-            nextBtn.style.display = "none"
-            submit.style.display = "block"
+            nextBtn.style.display = "none";
+            submit.style.display = "block";
             return;
-
         } else {
             questionCount++;
             updateQuestions();
@@ -116,28 +142,39 @@ const moveToNextQuestion = (() => {
 })();
 
 const displayResult = () => {
+    const getNewScore = JSON.parse(localStorage.getItem("score"));
+    const getNewName = JSON.parse(localStorage.getItem("name"));
     const user = document.querySelector(".profile-score");
-    const getScore = JSON.parse(localStorage.getItem("score"))
-    const getUserName = JSON.parse(localStorage.getItem("name"))
     const quizResult = document.createElement("div");
     questionBox.style.display = "none";
     quizResult.className = "quiz-result";
-    quizResult.innerHTML = ` <h3 class="score-name"><span>Name:</span>${getUserName}</h3>
-    <div class="result"> <span>Score :</span> ${getScore}</div>`
-    user.append(quizResult)
-}
+    quizResult.innerHTML = ` <h3 class="score-name"><span>Name:</span>${getNewName}</h3>
+        <div class="result"> <span>Score :</span> ${getNewScore}</div>`;
+    user.append(quizResult);
+    displayHighScore();
 
-submit.addEventListener("click", (e) => {
-    e.preventDefault()
+};
+
+submit.addEventListener("click", e => {
+    e.preventDefault();
     if (scores.length !== 0) {
         const totalScores = scores.reduce((a, b) => {
             return a + b;
         }, 0);
-        console.log(totalScores);
         localStorage.setItem("score", JSON.stringify(totalScores));
         displayResult();
-
+        submit.style.display = "none";
+        restart.style.display = "block";
     } else {
-        console.log("you score zero");
+        const user = document.querySelector(".profile-score");
+        const getUserName = JSON.parse(localStorage.getItem("name"));
+        const quizResult = document.createElement("div");
+        questionBox.style.display = "none";
+        quizResult.innerHTML = ` <h3 class="score-name"><span>Name:</span>${getUserName}</h3>
+            <div class="result"> <span>Score:</span> ${0}</div>`;
+        user.append(quizResult);
+        submit.style.display = "none";
+        restart.style.display = "block";
+
     }
 });
