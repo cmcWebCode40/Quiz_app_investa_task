@@ -30,7 +30,7 @@ form.addEventListener("submit", e => {
 
 
 const displayHighScore = () => {
-    const getNewScore = JSON.parse(localStorage.getItem("score"));
+    const getNewScore = JSON.parse(localStorage.getItem("highscore"));
     const highScore = document.querySelector(".user-score");
     const score = document.createElement("div");
 
@@ -47,6 +47,7 @@ const displayHighScore = () => {
 
 window.addEventListener("load", () => {
     displayHighScore();
+    // localStorage.setItem("highscore", JSON.stringify(0));
 });
 
 const allQuizQuestions = [{
@@ -116,7 +117,6 @@ const initializeQuiz = (() => {
     appendQuestions(0);
 })();
 
-console.log("hello");
 
 const moveToNextQuestion = (() => {
     nextBtn.addEventListener("click", e => {
@@ -151,7 +151,7 @@ const displayResult = () => {
     quizResult.innerHTML = ` <h3 class="score-name"><span>Name:</span>${getNewName}</h3>
         <div class="result"> <span>Score :</span> ${getNewScore}</div>`;
     user.append(quizResult);
-    displayHighScore();
+    // displayHighScore();
 
 };
 
@@ -162,9 +162,23 @@ submit.addEventListener("click", e => {
             return a + b;
         }, 0);
         localStorage.setItem("score", JSON.stringify(totalScores));
-        displayResult();
+        const highMark = JSON.parse(localStorage.getItem("highscore"));
         submit.style.display = "none";
         restart.style.display = "block";
+        displayResult();
+        if (totalScores >= highMark) {
+            let totalScores = scores.reduce((a, b) => {
+                return a + b;
+            }, 0);
+            localStorage.setItem("highscore", JSON.stringify(totalScores));
+            displayHighScore();
+
+
+        } else {
+            return
+        }
+
+
     } else {
         const user = document.querySelector(".profile-score");
         const getUserName = JSON.parse(localStorage.getItem("name"));
