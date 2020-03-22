@@ -1,3 +1,4 @@
+//***Globale DOM elements..
 const userName = document.querySelector(".active-name");
 const container = document.querySelector(".container");
 const nextBtn = document.querySelector(".next-btn");
@@ -8,26 +9,28 @@ const questionBox = document.querySelector(".questions-box");
 const restart = document.querySelector(".restart");
 const readyToPlay = document.querySelector(".ready");
 
-submit.style.display = "none";
-restart.style.display = "none";
-questionBox.style.display = "none";
-
 const scores = [];
 const form = document.querySelector("#form");
 
-// //L****Local storage files****//
-// const getScore = JSON.parse(localStorage.getItem("score"));
-// const getUserName = JSON.parse(localStorage.getItem("name"));
+const displayAndHiddenElements = (target, type) => {
+    const displayType = (target.style.display = type);
+    return displayType;
+};
+
+displayAndHiddenElements(submit, "none");
+displayAndHiddenElements(restart, "none");
+displayAndHiddenElements(questionBox, "none");
+displayAndHiddenElements(nextBtn, "none");
 
 form.addEventListener("submit", e => {
     e.preventDefault();
     localStorage.setItem("name", JSON.stringify(userName.value));
     userName.value = "";
-    form.style.display = "none";
-    questionBox.style.display = "block";
-    readyToPlay.style.display = "none";
+    displayAndHiddenElements(form, "none");
+    displayAndHiddenElements(questionBox, "block");
+    displayAndHiddenElements(readyToPlay, "none");
+    displayAndHiddenElements(nextBtn, "block");
 });
-
 
 const displayHighScore = () => {
     const getNewScore = JSON.parse(localStorage.getItem("highscore"));
@@ -47,7 +50,6 @@ const displayHighScore = () => {
 
 window.addEventListener("load", () => {
     displayHighScore();
-    // localStorage.setItem("highscore", JSON.stringify(0));
 });
 
 const allQuizQuestions = [{
@@ -95,17 +97,17 @@ const allQuizQuestions = [{
 let questionCount = 0;
 const result = allQuizQuestions[questionCount];
 
-const appendQuestions = value => {
-    const result = allQuizQuestions[value];
+const appendQuestions = counter => {
+    const questionsOutput = allQuizQuestions[counter];
 
     const quizBox = document.createElement("div");
     quizBox.className = "quiz";
     questionBox.innerHTML = "";
-    quizBox.innerHTML = `<p class="question-space">${result.q1} </p>
-    <input type="radio" name="options" class="radio-btn"   value=${result.a}> <span class="answer-options"> ${result.a}</sapn>
-    <input type="radio" name="options" class="radio-btn"  value=${result.b}> <span class="answer-options"> ${result.b}</sapn>
-    <input type="radio" name="options" class="radio-btn"  value=${result.c}> <span class="answer-options"> ${result.c}</sapn>
-    <input type="radio" name="options" class="radio-btn"  value=${result.d}> <span class="answer-options"> ${result.d}</sapn>`;
+    quizBox.innerHTML = `<p class="question-space">${questionsOutput.q1} </p>
+    <input type="radio" name="options" class="radio-btn"   value=${questionsOutput.a}> <span class="answer-options"> ${questionsOutput.a}</sapn>
+    <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.b}> <span class="answer-options"> ${questionsOutput.b}</sapn>
+    <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.c}> <span class="answer-options"> ${questionsOutput.c}</sapn>
+    <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.d}> <span class="answer-options"> ${questionsOutput.d}</sapn>`;
     questionBox.append(quizBox);
 };
 
@@ -117,13 +119,12 @@ const initializeQuiz = (() => {
     appendQuestions(0);
 })();
 
-
 const moveToNextQuestion = (() => {
     nextBtn.addEventListener("click", e => {
         for (i = 0; i < radioBtn.length; i++) {
             if (radioBtn[i].checked === true) {
-                const element = radioBtn[i].value;
-                if (element === allQuizQuestions[questionCount].answer) {
+                const selectedAnswer = radioBtn[i].value;
+                if (selectedAnswer === allQuizQuestions[questionCount].answer) {
                     scores.push(1);
                 } else {
                     scores.push(0);
@@ -131,8 +132,8 @@ const moveToNextQuestion = (() => {
             }
         }
         if (questionCount >= 4) {
-            nextBtn.style.display = "none";
-            submit.style.display = "block";
+            displayAndHiddenElements(nextBtn, "none");
+            displayAndHiddenElements(submit, "block");
             return;
         } else {
             questionCount++;
@@ -146,49 +147,39 @@ const displayResult = () => {
     const getNewName = JSON.parse(localStorage.getItem("name"));
     const user = document.querySelector(".profile-score");
     const quizResult = document.createElement("div");
-    questionBox.style.display = "none";
+    displayAndHiddenElements(questionBox, "none");
     quizResult.className = "quiz-result";
     quizResult.innerHTML = ` <h3 class="score-name"><span>Name:</span>${getNewName}</h3>
         <div class="result"> <span>Score :</span> ${getNewScore}</div>`;
     user.append(quizResult);
-    // displayHighScore();
-
 };
 
 submit.addEventListener("click", e => {
     e.preventDefault();
+    const totalScores = scores.reduce((a, b) => {
+        return a + b;
+    }, 0);
     if (scores.length !== 0) {
-        const totalScores = scores.reduce((a, b) => {
-            return a + b;
-        }, 0);
         localStorage.setItem("score", JSON.stringify(totalScores));
         const highMark = JSON.parse(localStorage.getItem("highscore"));
-        submit.style.display = "none";
-        restart.style.display = "block";
+        displayAndHiddenElements(submit, "none");
+        displayAndHiddenElements(restart, "block");
         displayResult();
         if (totalScores >= highMark) {
-            let totalScores = scores.reduce((a, b) => {
-                return a + b;
-            }, 0);
             localStorage.setItem("highscore", JSON.stringify(totalScores));
             displayHighScore();
-
-
         } else {
-            return
+            return;
         }
-
-
     } else {
         const user = document.querySelector(".profile-score");
         const getUserName = JSON.parse(localStorage.getItem("name"));
         const quizResult = document.createElement("div");
-        questionBox.style.display = "none";
+        displayAndHiddenElements(questionBox, "none");
         quizResult.innerHTML = ` <h3 class="score-name"><span>Name:</span>${getUserName}</h3>
             <div class="result"> <span>Score:</span> ${0}</div>`;
         user.append(quizResult);
-        submit.style.display = "none";
-        restart.style.display = "block";
-
+        displayAndHiddenElements(submit, "none");
+        displayAndHiddenElements(restart, "block");
     }
 });
