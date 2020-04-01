@@ -13,7 +13,7 @@ const scores = [];
 const form = document.querySelector("#form");
 
 const displayAndHiddenElements = (target, type) => {
-    const displayType = (target.style.display = type);
+    const displayType = target.style.display = String(type);
     return displayType;
 };
 
@@ -32,9 +32,9 @@ form.addEventListener("submit", e => {
     displayAndHiddenElements(nextBtn, "block");
 });
 
-const displayHighScore = () => {
+const displayHighScore = (element) => {
     const getNewScore = JSON.parse(localStorage.getItem("highscore"));
-    const highScore = document.querySelector(".user-score");
+    const highScore = document.querySelector(element);
     const score = document.createElement("div");
 
     if (getNewScore) {
@@ -49,7 +49,7 @@ const displayHighScore = () => {
 };
 
 window.addEventListener("load", () => {
-    displayHighScore();
+    displayHighScore(".user-score");
 });
 
 const allQuizQuestions = [{
@@ -103,11 +103,13 @@ const appendQuestions = counter => {
     const quizBox = document.createElement("div");
     quizBox.className = "quiz";
     questionBox.innerHTML = "";
-    quizBox.innerHTML = `<p class="question-space">${questionsOutput.q1} </p>
-    <input type="radio" name="options" class="radio-btn"   value=${questionsOutput.a}> <span class="answer-options"> ${questionsOutput.a}</sapn>
-    <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.b}> <span class="answer-options"> ${questionsOutput.b}</sapn>
-    <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.c}> <span class="answer-options"> ${questionsOutput.c}</sapn>
-    <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.d}> <span class="answer-options"> ${questionsOutput.d}</sapn>`;
+    quizBox.innerHTML = `<div class="question-space">${questionsOutput.q1} </div
+    >
+   
+    <div><input type="radio" name="options" class="radio-btn"   value=${questionsOutput.a}> <span class="answer-options"> ${questionsOutput.a}</sapn></div>
+    <div> <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.b}> <span class="answer-options"> ${questionsOutput.b}</sapn></div>
+    <div> <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.c}> <span class="answer-options"> ${questionsOutput.c}</sapn></div>
+    <div> <input type="radio" name="options" class="radio-btn"  value=${questionsOutput.d}> <span class="answer-options"> ${questionsOutput.d}</sapn></div>`;
     questionBox.append(quizBox);
 };
 
@@ -167,7 +169,7 @@ submit.addEventListener("click", e => {
         displayResult();
         if (totalScores >= highMark) {
             localStorage.setItem("highscore", JSON.stringify(totalScores));
-            displayHighScore();
+            displayHighScore(".user-score");
         } else {
             return;
         }
@@ -183,3 +185,9 @@ submit.addEventListener("click", e => {
         displayAndHiddenElements(restart, "block");
     }
 });
+
+
+// const userProfile = (() => displayHighScore(".user-page"))();
+
+
+console.log("we are here");
