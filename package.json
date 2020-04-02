@@ -1,0 +1,23 @@
+{
+  "name": "quiz_app_investa_task",
+  "version": "1.0.0",
+  "description": "Quiz challenge app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmcWebCode40/Quiz_app_investa_task.git"
+  },
+  "keywords": [
+    "quiz",
+    "task"
+  ],
+  "author": "cmcWebCode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmcWebCode40/Quiz_app_investa_task/issues"
+  },
+  "homepage": "https://github.com/cmcWebCode40/Quiz_app_investa_task#readme"
+}
