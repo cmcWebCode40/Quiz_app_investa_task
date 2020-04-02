@@ -13,7 +13,7 @@ const scores = [];
 const form = document.querySelector("#form");
 
 const displayAndHiddenElements = (target, type) => {
-    const displayType = target.style.display = String(type);
+    const displayType = (target.style.display = String(type));
     return displayType;
 };
 
@@ -32,7 +32,7 @@ form.addEventListener("submit", e => {
     displayAndHiddenElements(nextBtn, "block");
 });
 
-const displayHighScore = (element) => {
+const displayHighScore = element => {
     const getNewScore = JSON.parse(localStorage.getItem("highscore"));
     const highScore = document.querySelector(element);
     const score = document.createElement("div");
@@ -91,6 +91,46 @@ const allQuizQuestions = [{
         c: "ondragover",
         d: "ondragstart",
         answer: "ondragstart"
+    },
+    {
+        q1: "6. Which of the following attribute triggers event before the document is printed?",
+        a: "onbeforeprint",
+        b: " onafterprint",
+        c: "onprint",
+        d: "before",
+        answer: "onbeforeprint"
+    },
+    {
+        q1: "7.  Which of the following attribute triggers event when the window gets focus?",
+        a: "focus",
+        b: " onfocus",
+        c: "onformchange",
+        d: "onformminput",
+        answer: "onfocus"
+    },
+    {
+        q1: "8. Which of the following attribute triggers event when the document comes online?",
+        a: "onloadedmetadata",
+        b: " onloadstart",
+        c: "onmessage",
+        d: "ononline",
+        answer: "ononline"
+    },
+    {
+        q1: "9. Which of the following attribute specifies if the element must have it's spelling or grammar checked?",
+        a: "item",
+        b: " itemcheck",
+        c: "spellcheck",
+        d: "itemgroup",
+        answer: "spellcheck"
+    },
+    {
+        q1: "10.  Are HTML tags case sensitive?",
+        a: "true",
+        b: "false",
+        c: "all of the above",
+        d: "none",
+        answer: "false"
     }
 ];
 
@@ -127,13 +167,13 @@ const moveToNextQuestion = (() => {
             if (radioBtn[i].checked === true) {
                 const selectedAnswer = radioBtn[i].value;
                 if (selectedAnswer === allQuizQuestions[questionCount].answer) {
-                    scores.push(1);
+                    scores.push(2);
                 } else {
                     scores.push(0);
                 }
             }
         }
-        if (questionCount >= 4) {
+        if (questionCount >= 9) {
             displayAndHiddenElements(nextBtn, "none");
             displayAndHiddenElements(submit, "block");
             return;
@@ -186,8 +226,6 @@ submit.addEventListener("click", e => {
     }
 });
 
-
 // const userProfile = (() => displayHighScore(".user-page"))();
-
 
 console.log("we are here");
