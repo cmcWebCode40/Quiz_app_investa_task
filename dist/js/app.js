@@ -1,4 +1,4 @@
-//***Globale DOM elements..
+8//***Globale DOM elements..
 const userName = document.querySelector(".active-name");
 const container = document.querySelector(".container");
 const nextBtn = document.querySelector(".next-btn");
@@ -53,85 +53,85 @@ window.addEventListener("load", () => {
 });
 
 const allQuizQuestions = [{
-        q1: "1. Which of the following input control is used for input fields that should contain an e-mail address in Web Form 2.0?",
-        a: "email",
-        b: "url",
-        c: "text",
-        d: "number",
-        answer: "email"
-    },
-    {
-        q1: "2. Which of the following tag automatically focus one particular form field in HTML5?",
-        a: "output",
-        b: "placeholder",
-        c: "autofocus",
-        d: "required",
-        answer: "autofocus"
-    },
-    {
-        q1: "3. Which of the following attribute triggers an abort event?  ",
-        a: "offline",
-        b: "onabort",
-        c: "abort",
-        d: "onbeforeonload",
-        answer: "onabort"
-    },
-    {
-        q1: "4. Which of the following attribute triggers event when an element has been dragged to a valid drop target? ",
-        a: "ondragleave",
-        b: " ondrag",
-        c: "ondragend",
-        d: "ondragenter",
-        answer: "ondragenter"
-    },
-    {
-        q1: "5. Which of the following attribute triggers event at the start of a drag operation?",
-        a: "ondragleave",
-        b: " ondrag",
-        c: "ondragover",
-        d: "ondragstart",
-        answer: "ondragstart"
-    },
-    {
-        q1: "6. Which of the following attribute triggers event before the document is printed?",
-        a: "onbeforeprint",
-        b: " onafterprint",
-        c: "onprint",
-        d: "before",
-        answer: "onbeforeprint"
-    },
-    {
-        q1: "7.  Which of the following attribute triggers event when the window gets focus?",
-        a: "focus",
-        b: " onfocus",
-        c: "onformchange",
-        d: "onformminput",
-        answer: "onfocus"
-    },
-    {
-        q1: "8. Which of the following attribute triggers event when the document comes online?",
-        a: "onloadedmetadata",
-        b: " onloadstart",
-        c: "onmessage",
-        d: "ononline",
-        answer: "ononline"
-    },
-    {
-        q1: "9. Which of the following attribute specifies if the element must have it's spelling or grammar checked?",
-        a: "item",
-        b: " itemcheck",
-        c: "spellcheck",
-        d: "itemgroup",
-        answer: "spellcheck"
-    },
-    {
-        q1: "10.  Are HTML tags case sensitive?",
-        a: "true",
-        b: "false",
-        c: "all of the above",
-        d: "none",
-        answer: "false"
-    }
+    q1: "1. Which of the following input control is used for input fields that should contain an e-mail address in Web Form 2.0?",
+    a: "email",
+    b: "url",
+    c: "text",
+    d: "number",
+    answer: "email"
+},
+{
+    q1: "2. Which of the following tag automatically focus one particular form field in HTML5?",
+    a: "output",
+    b: "placeholder",
+    c: "autofocus",
+    d: "required",
+    answer: "autofocus"
+},
+{
+    q1: "3. Which of the following attribute triggers an abort event?  ",
+    a: "offline",
+    b: "onabort",
+    c: "abort",
+    d: "onbeforeonload",
+    answer: "onabort"
+},
+{
+    q1: "4. Which of the following attribute triggers event when an element has been dragged to a valid drop target? ",
+    a: "ondragleave",
+    b: " ondrag",
+    c: "ondragend",
+    d: "ondragenter",
+    answer: "ondragenter"
+},
+{
+    q1: "5. Which of the following attribute triggers event at the start of a drag operation?",
+    a: "ondragleave",
+    b: " ondrag",
+    c: "ondragover",
+    d: "ondragstart",
+    answer: "ondragstart"
+},
+{
+    q1: "6. Which of the following attribute triggers event before the document is printed?",
+    a: "onbeforeprint",
+    b: " onafterprint",
+    c: "onprint",
+    d: "before",
+    answer: "onbeforeprint"
+},
+{
+    q1: "7.  Which of the following attribute triggers event when the window gets focus?",
+    a: "focus",
+    b: " onfocus",
+    c: "onformchange",
+    d: "onformminput",
+    answer: "onfocus"
+},
+{
+    q1: "8. Which of the following attribute triggers event when the document comes online?",
+    a: "onloadedmetadata",
+    b: " onloadstart",
+    c: "onmessage",
+    d: "ononline",
+    answer: "ononline"
+},
+{
+    q1: "9. Which of the following attribute specifies if the element must have it's spelling or grammar checked?",
+    a: "item",
+    b: " itemcheck",
+    c: "spellcheck",
+    d: "itemgroup",
+    answer: "spellcheck"
+},
+{
+    q1: "10.  Are HTML tags case sensitive?",
+    a: "true",
+    b: "false",
+    c: "all of the above",
+    d: "none",
+    answer: "false"
+}
 ];
 
 let questionCount = 0;
