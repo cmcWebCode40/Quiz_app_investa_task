@@ -226,6 +226,3 @@ submit.addEventListener("click", e => {
     }
 });
 
-// const userProfile = (() => displayHighScore(".user-page"))();
-
-console.log("we are here");
