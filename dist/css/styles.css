@@ -134,6 +134,7 @@ label span {
     border-radius: 7px;
     color: #fff;
     outline: none;
+    cursor: pointer;
 }
 
 .next-btn:hover,
