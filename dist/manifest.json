@@ -1,12 +1,13 @@
 {
-    "name": "INVESTA QUIZ APP",
-    "short_name": "INVESTA QUIZ APP",
+    "name": "investa Quiz App",
+    "short_name": "Quiz App",
     "theme_color": "#6c63ff",
-    "background_color": "#f4f4f4",
+    "background_color": "#ffffff",
     "display": "standalone",
     "Scope": "/",
     "start_url": "/",
-    "icons": [{
+    "icons": [
+        {
             "src": "images/icons/icon-72x72.png",
             "sizes": "72x72",
             "type": "image/png"
@@ -46,6 +47,5 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ],
-    "splash_pages": null
+    ]
 }

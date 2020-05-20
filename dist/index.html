@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/icons/icon-128x128.png">
     <meta name="description" content="quiz, html app skills ,basics">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./dist/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="apple-touch-icon" href="./images/icons/icon-128x128.png" />
+    <link rel="manifest" href="./manifest.json">
     <title>Quiz Now</title>
 </head>
 
@@ -23,10 +25,10 @@
                         class="fas fa-user-circle fa-2x"></i></a>
             </div>
             <div class="bg-image">
-                <img src="./dist/images/undraw_exams_g4ow.svg" alt="logo image quiz">
+                <img src="./images/undraw_exams_g4ow.svg" alt="logo image quiz">
             </div>
             <div class="start">
-                <a href="./dist/quizpage.html" class="start-btn">START NOW</a>
+                <a href="./quizpage.html" class="start-btn">START NOW</a>
             </div>
         </div>
         <footer>
@@ -37,7 +39,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./dist/sw.js');
+                navigator.serviceWorker.register('./sw.js');
             })
         }
     </script>
